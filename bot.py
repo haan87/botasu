@@ -464,7 +464,7 @@ if __name__=='__main__':
 				menu()
 		except KeyError:
 			print(m+'['+p+'×'+m+'] Error please cek your account and try again')
-			os.system('rm -rf token.txt')
+			os.system('rm -rf result/token.txt')
 		except requests.exceptions.ConnectionError:
 			print(m+'['+p+'×'+m+'] No connection')
 #### DulLahZX ####
