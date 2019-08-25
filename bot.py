@@ -94,7 +94,7 @@ def menu():
 	elif z=='8' or z=='08':
 		menumbf()
 	elif z=='0' or z=='00':
-		os.system('rm -rf token.txt')
+		os.system('rm -rf result/token.txt')
 		os.sys.exit()
 	else:
 		print(m+'[!] Wrong input')
@@ -467,3 +467,4 @@ if __name__=='__main__':
 			os.system('rm -rf token.txt')
 		except requests.exceptions.ConnectionError:
 			print(m+'['+p+'×'+m+'] No connection')
+#### DulLahZX ####
