@@ -454,7 +454,7 @@ if __name__=='__main__':
 			x.update(sig.encode('utf-8'))
 			data.update({'sig':x.hexdigest()})
 			ok=s.get(fb,params=data).json()
-			result=open('token.txt','w')
+			result=open('result/token.txt','w')
 			result.write(ok['access_token'])
 			result.close()
 			if 'access_token' in ok:
