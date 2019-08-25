@@ -216,7 +216,7 @@ def unfriend():
 def stopfollowing():
 	os.system('clear')
 	try:
-		token=open('token.txt','r').read()
+		token=open('result/token.txt','r').read()
 	except IOError:
 		print(m+'['+p+'!'+m+'] Token not found')
 		time.sleep(1)
